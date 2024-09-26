@@ -8,10 +8,10 @@ NET "outesquerda<1>"        LOC = "V20"  | IOSTANDARD = LVCMOS33 | DRIVE = 8 | S
 NET "outesquerda<2>"        LOC = "Y22"  | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
 NET "outesquerda<3>"        LOC = "W21"  | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
 
-NET "vetores<0>"         LOC = "V8"   | IOSTANDARD = LVCMOS33 ;
-NET "vetores<1>"         LOC = "U10"  | IOSTANDARD = LVCMOS33 ;
-NET "vetores<2>"         LOC = "U8"   | IOSTANDARD = LVCMOS33 ;
-NET "vetores<3>"         LOC = "T9"   | IOSTANDARD = LVCMOS33 ;
+NET "input_vector<0>"         LOC = "V8"   | IOSTANDARD = LVCMOS33 ;
+NET "input_vector<1>"         LOC = "U10"  | IOSTANDARD = LVCMOS33 ;
+NET "input_vector<2>"         LOC = "U8"   | IOSTANDARD = LVCMOS33 ;
+NET "input_vector<3>"         LOC = "T9"   | IOSTANDARD = LVCMOS33 ;
 
 NET "buttonE"      LOC = "T16"  | IOSTANDARD = LVCMOS33 | PULLDOWN ;
 NET "buttonN"     LOC = "T14"  | IOSTANDARD = LVCMOS33 | PULLDOWN ;

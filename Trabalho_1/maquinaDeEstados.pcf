@@ -1,12 +1,12 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue Sep 10 14:48:28 2024
+// Written by: Map P.20131013 on Tue Sep 24 14:42:14 2024
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "Vetores<0>" LOCATE = SITE "V8" LEVEL 1;
-COMP "Vetores<1>" LOCATE = SITE "U10" LEVEL 1;
-COMP "Vetores<2>" LOCATE = SITE "U8" LEVEL 1;
-COMP "Vetores<3>" LOCATE = SITE "T9" LEVEL 1;
+COMP "input_vector<0>" LOCATE = SITE "V8" LEVEL 1;
+COMP "input_vector<1>" LOCATE = SITE "U10" LEVEL 1;
+COMP "input_vector<2>" LOCATE = SITE "U8" LEVEL 1;
+COMP "input_vector<3>" LOCATE = SITE "T9" LEVEL 1;
 COMP "ButtonE" LOCATE = SITE "T16" LEVEL 1;
 COMP "ButtonN" LOCATE = SITE "T14" LEVEL 1;
 COMP "ButtonS" LOCATE = SITE "T15" LEVEL 1;

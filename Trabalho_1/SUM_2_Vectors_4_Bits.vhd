@@ -35,7 +35,7 @@ architecture fouradder_structure of SUM_2_Vectors_4_Bits is
 	end component;
 	
 	begin
-	FA0: Full_Adder port map (VECTOR_A(0), VECTOR_B(0), '0', SUM_RESULT(0), COUT_FA0);
+	FA0: Full_Adder port map (VECTOR_A(0), VECTOR_B(0), Cin, SUM_RESULT(0), COUT_FA0);
 	FA1: Full_Adder port map (VECTOR_A(1), VECTOR_B(1), COUT_FA0, SUM_RESULT(1), COUT_FA1);
 	FA2: Full_Adder port map (VECTOR_A(2), VECTOR_B(2), COUT_FA1, SUM_RESULT(2), COUT_FA2);
 	FA3: Full_Adder port map (VECTOR_A(3), VECTOR_B(3), COUT_FA2, SUM_RESULT(3), COUT_FA3);

@@ -82,7 +82,6 @@
     <file xil_pn:fileType="FILE_TRCE_MISC" xil_pn:name="maquinaDeEstados.ptwx"/>
     <file xil_pn:fileType="FILE_SPL" xil_pn:name="maquinaDeEstados.spl"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="maquinaDeEstados.stx"/>
-    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="maquinaDeEstados.sym" xil_pn:origination="imported"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="maquinaDeEstados.syr"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_TXT_REPORT" xil_pn:name="maquinaDeEstados.twr" xil_pn:subbranch="Par"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_XML_REPORT" xil_pn:name="maquinaDeEstados.twx" xil_pn:subbranch="Par"/>
@@ -91,6 +90,7 @@
     <file xil_pn:fileType="FILE_VHDL_INSTTEMPLATE" xil_pn:name="maquinaDeEstados.vhi"/>
     <file xil_pn:fileType="FILE_XPI" xil_pn:name="maquinaDeEstados.xpi"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="maquinaDeEstados.xst"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="maquinaDeEstados_envsettings.html"/>
     <file xil_pn:fileType="FILE_NCD" xil_pn:name="maquinaDeEstados_guide.ncd" xil_pn:origination="imported"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="maquinaDeEstados_map.map" xil_pn:subbranch="Map"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="maquinaDeEstados_map.mrp" xil_pn:subbranch="Map"/>
@@ -101,6 +101,7 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_EXCEL_REPORT" xil_pn:name="maquinaDeEstados_pad.csv" xil_pn:subbranch="Par"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_TXT_REPORT" xil_pn:name="maquinaDeEstados_pad.txt" xil_pn:subbranch="Par"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="maquinaDeEstados_par.xrpt"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="maquinaDeEstados_summary.html"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="maquinaDeEstados_summary.xml"/>
     <file xil_pn:fileType="FILE_WEBTALK" xil_pn:name="maquinaDeEstados_usage.xml"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="maquinaDeEstados_vhdl.prj"/>
@@ -157,16 +158,18 @@
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1725386774" xil_pn:in_ck="-1472295446894102604" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-9199274941592167812" xil_pn:start_ts="1725386773">
       <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputChanged"/>
       <status xil_pn:value="OutputRemoved"/>
@@ -186,11 +189,11 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1725988785" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-8133177899667326637" xil_pn:start_ts="1725988785">
+    <transform xil_pn:end_ts="1727195337" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-8133177899667326637" xil_pn:start_ts="1727195337">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1725988785" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-9016600824804526835" xil_pn:start_ts="1725988785">
+    <transform xil_pn:end_ts="1727195337" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-9016600824804526835" xil_pn:start_ts="1727195337">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
@@ -198,7 +201,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1725988785" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="8718247263501355" xil_pn:start_ts="1725988785">
+    <transform xil_pn:end_ts="1727195337" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="8718247263501355" xil_pn:start_ts="1727195337">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
@@ -206,13 +209,12 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1725988785" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="-2737880152869138409" xil_pn:start_ts="1725988785">
+    <transform xil_pn:end_ts="1727195337" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="-2737880152869138409" xil_pn:start_ts="1727195337">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1725990464" xil_pn:in_ck="-4854977711308478016" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="7261302939315905140" xil_pn:start_ts="1725990457">
+    <transform xil_pn:end_ts="1727199719" xil_pn:in_ck="-2460224459754519078" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="7261302939315905140" xil_pn:start_ts="1727199710">
       <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
@@ -229,11 +231,11 @@
       <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
     </transform>
-    <transform xil_pn:end_ts="1725988793" xil_pn:in_ck="176569028253723405" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="5028115532021793280" xil_pn:start_ts="1725988793">
+    <transform xil_pn:end_ts="1727195657" xil_pn:in_ck="176569028253723405" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="5028115532021793280" xil_pn:start_ts="1727195657">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1725990504" xil_pn:in_ck="4265148051422885973" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="5525732822440235140" xil_pn:start_ts="1725990499">
+    <transform xil_pn:end_ts="1727199730" xil_pn:in_ck="4265148051422885973" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="5525732822440235140" xil_pn:start_ts="1727199726">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_ngo"/>
@@ -242,7 +244,7 @@
       <outfile xil_pn:name="maquinaDeEstados.ngd"/>
       <outfile xil_pn:name="maquinaDeEstados_ngdbuild.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1725990509" xil_pn:in_ck="-9190790434989558116" xil_pn:name="TRANEXT_map_spartan3" xil_pn:prop_ck="570889668722473129" xil_pn:start_ts="1725990504">
+    <transform xil_pn:end_ts="1727199735" xil_pn:in_ck="-9190790434989558116" xil_pn:name="TRANEXT_map_spartan3" xil_pn:prop_ck="570889668722473129" xil_pn:start_ts="1727199730">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
@@ -257,7 +259,7 @@
       <outfile xil_pn:name="maquinaDeEstados_summary.xml"/>
       <outfile xil_pn:name="maquinaDeEstados_usage.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1725990522" xil_pn:in_ck="-7882419116409719915" xil_pn:name="TRANEXT_par_spartan3" xil_pn:prop_ck="-8699727321066641134" xil_pn:start_ts="1725990509">
+    <transform xil_pn:end_ts="1727199749" xil_pn:in_ck="-7882419116409719915" xil_pn:name="TRANEXT_par_spartan3" xil_pn:prop_ck="-8699727321066641134" xil_pn:start_ts="1727199735">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
@@ -271,7 +273,7 @@
       <outfile xil_pn:name="maquinaDeEstados_pad.txt"/>
       <outfile xil_pn:name="maquinaDeEstados_par.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1725990529" xil_pn:in_ck="7528271063568359019" xil_pn:name="TRANEXT_bitFile_spartan3a" xil_pn:prop_ck="8242823369169169445" xil_pn:start_ts="1725990523">
+    <transform xil_pn:end_ts="1727199756" xil_pn:in_ck="7528271063568359019" xil_pn:name="TRANEXT_bitFile_spartan3a" xil_pn:prop_ck="8242823369169169445" xil_pn:start_ts="1727199750">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
@@ -283,7 +285,7 @@
       <outfile xil_pn:name="webtalk.log"/>
       <outfile xil_pn:name="webtalk_pn.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1725990543" xil_pn:in_ck="7528271063568346165" xil_pn:name="TRAN_configureTargetDevice" xil_pn:prop_ck="3725548802311211136" xil_pn:start_ts="1725990542">
+    <transform xil_pn:end_ts="1727199759" xil_pn:in_ck="7528271063568346165" xil_pn:name="TRAN_configureTargetDevice" xil_pn:prop_ck="3725548802311211136" xil_pn:start_ts="1727199758">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
@@ -291,16 +293,18 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
     </transform>
-    <transform xil_pn:end_ts="1725990522" xil_pn:in_ck="2584395578908053656" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416186" xil_pn:start_ts="1725990519">
+    <transform xil_pn:end_ts="1727199749" xil_pn:in_ck="2584395578908053656" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416186" xil_pn:start_ts="1727199746">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
       <outfile xil_pn:name="maquinaDeEstados.twr"/>
       <outfile xil_pn:name="maquinaDeEstados.twx"/>
     </transform>
-    <transform xil_pn:end_ts="1725990470" xil_pn:in_ck="1384794138894174792" xil_pn:name="TRAN_postSynthesisSimModel" xil_pn:prop_ck="5020479759223192492" xil_pn:start_ts="1725990468">
+    <transform xil_pn:end_ts="1727199723" xil_pn:in_ck="1384794138894174792" xil_pn:name="TRAN_postSynthesisSimModel" xil_pn:prop_ck="5020479759223192492" xil_pn:start_ts="1727199721">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="netgen"/>

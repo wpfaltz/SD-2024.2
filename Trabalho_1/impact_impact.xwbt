@@ -1,8 +1,8 @@
 INTSTYLE=impact
-INFILE=/home/sd/Downloads/Trabalho/impact.xsl
-OUTFILE=/home/sd/Downloads/Trabalho/impact.xsl
+INFILE=/home/sd/Downloads/Trabalho_1/impact.xsl
+OUTFILE=/home/sd/Downloads/Trabalho_1/impact.xsl
 FAMILY=Multiple
 PART=Multiple
-WORKINGDIR=/home/sd/Downloads/Trabalho
+WORKINGDIR=/home/sd/Downloads/Trabalho_1
 LICENSE=iMPACT
 USER_INFO=iMPACT

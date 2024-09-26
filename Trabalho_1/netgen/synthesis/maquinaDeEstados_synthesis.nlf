@@ -11,11 +11,11 @@ Processing design ...
   Preping design's networks ...
   Preping design's macros ...
 Writing VHDL netlist
-'/home/sd/Downloads/Trabalho/netgen/synthesis/maquinaDeEstados_synthesis.vhd'
+'/home/sd/Downloads/Trabalho_1/netgen/synthesis/maquinaDeEstados_synthesis.vhd'
 ...
 INFO:NetListWriters:635 - The generated VHDL netlist contains Xilinx UNISIM
    simulation primitives and has to be used with UNISIM library for correct
    compilation and simulation. 
 Number of warnings: 0
 Number of info messages: 1
-Total memory usage is 313940 kilobytes
+Total memory usage is 314244 kilobytes
