@@ -29,14 +29,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity AND_2_Vectors_4_Bits is
-    Port ( A : in  STD_LOGIC_VECTOR (3 downto 0);
-           B : in  STD_LOGIC_VECTOR (3 downto 0);
-           C : out  STD_LOGIC_VECTOR (3 downto 0));
-end AND_2_Vectors_4_Bits;
-
-
-architecture Behavioral of AND_2_Vectors_4_Bits is
+entity NAND_2_Vectors_4_Bits is
+        Port ( A : in  STD_LOGIC_VECTOR (3 downto 0);
+               B : in  STD_LOGIC_VECTOR (3 downto 0);
+               C : out  STD_LOGIC_VECTOR (3 downto 0));
+    end NAND_2_Vectors_4_Bits;
+    
+architecture Behavioral of NAND_2_Vectors_4_Bits is
     begin
-		C <= A and B;
+        C <= NOT (A and B);
 end Behavioral;

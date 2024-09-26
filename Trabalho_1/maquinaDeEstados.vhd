@@ -14,12 +14,6 @@ end maquinaDeEstados;
 
 architecture Behavioral of maquinaDeEstados is
 
-		component AND_2_Vectors_4_Bits
-			Port ( A : in STD_LOGIC_VECTOR (3 downto 0);
-				B : in STD_LOGIC_VECTOR (3 downto 0);
-				C : out STD_LOGIC_VECTOR (3 downto 0));
-		end component;
-
 		component SUM_2_Vectors_4_Bits
 			Port (VECTOR_A, VECTOR_B: in std_logic_vector(3 downto 0);
 				Cin : in std_logic;
@@ -33,8 +27,41 @@ architecture Behavioral of maquinaDeEstados is
 				DIFF_RESULT: out std_logic_vector (3 downto 0);
 				Borrow, V: out std_logic);
 		end component;
-		
-		
+
+		component AND_2_Vectors_4_Bits
+			Port ( A : in STD_LOGIC_VECTOR (3 downto 0);
+				B : in STD_LOGIC_VECTOR (3 downto 0);
+				C : out STD_LOGIC_VECTOR (3 downto 0));
+		end component;
+
+		component OR_2_Vectors_4_Bits
+			Port ( A : in STD_LOGIC_VECTOR (3 downto 0);
+				B : in STD_LOGIC_VECTOR (3 downto 0);
+				C : out STD_LOGIC_VECTOR (3 downto 0));
+		end component;
+
+		component NOR_2_Vectors_4_Bits
+			Port ( A : in STD_LOGIC_VECTOR (3 downto 0);
+				B : in STD_LOGIC_VECTOR (3 downto 0);
+				C : out STD_LOGIC_VECTOR (3 downto 0));
+		end component;
+
+		component NAND_2_Vectors_4_Bits
+			Port ( A : in STD_LOGIC_VECTOR (3 downto 0);
+				B : in STD_LOGIC_VECTOR (3 downto 0);
+				C : out STD_LOGIC_VECTOR (3 downto 0));
+		end component;	
+
+		component XOR_2_Vectors_4_Bits
+			Port ( A : in STD_LOGIC_VECTOR (3 downto 0);
+				B : in STD_LOGIC_VECTOR (3 downto 0);
+				C : out STD_LOGIC_VECTOR (3 downto 0));
+		end component;
+
+		component NOT_Vector_4_Bits
+			Port ( input_vector : in  STD_LOGIC_VECTOR (3 downto 0);
+				output_vector : out  STD_LOGIC_VECTOR (3 downto 0));
+		end component;
 
 		--> Componentes da máquina de estados
 		signal verifica: integer range 0 to 5 := 0;
@@ -45,23 +72,43 @@ architecture Behavioral of maquinaDeEstados is
 		signal B : std_logic_vector (3 downto 0); ----- valor do segundo numero
 		signal ULA_Op_Code : std_logic_vector (3 downto 0); ----- valor correspondente ao código da operação inicial da ULA
 
-		-- Somador
+		-- Saídas Somador
 		signal SOMA : std_logic_vector (3 downto 0); -------- resultado da soma
 		signal cout_Soma : std_logic;
 		signal overflow_soma : std_logic;
 		
-		-- Subtrator
+		-- Saídas Subtrator
 		signal DIF : std_logic_vector (3 downto 0); -------- resultado da soma
 		signal borrow_diff : std_logic;
 		signal overflow_diff : std_logic;
 		
-		-- AND dos 2 vetores
+		-- Saída AND dos 2 vetores
 		signal ANDE : std_logic_vector (3 downto 0);------resultado and de A e B
+
+		-- Saída OR dos 2 vetores
+		signal ORE : std_logic_vector (3 downto 0);------resultado or de A e B
+
+		-- Saída NOR dos 2 vetores
+		signal NORE : std_logic_vector (3 downto 0);------resultado nor de A e B
+
+		-- Saída NAND dos 2 vetores
+		signal NANDE : std_logic_vector (3 downto 0);------resultado nand de A e B
+
+		-- Saída XOR dos 2 vetores
+		signal XORE : std_logic_vector (3 downto 0);------resultado xor de A e B
+
+		-- Saída NOT do segundo vetor
+		signal NOT_B : std_logic_vector (3 downto 0);------resultado not de B
 
 		begin
 		AND_2 : AND_2_Vectors_4_Bits port map(A,B,ANDE);
 		SUM : SUM_2_Vectors_4_Bits port map(A, B,'0',SOMA, cout_Soma, overflow_soma);
 		DIFF : DIFF_2_Vectors_4_Bits port map(A, B, '1', DIF, borrow_diff, overflow_diff);
+		OR_2 : OR_2_Vectors_4_Bits port map(A,B,ORE);
+		NOR_2 : NOR_2_Vectors_4_Bits port map(A,B,NORE);
+		NAND_2 : NAND_2_Vectors_4_Bits port map(A,B,NANDE);
+		XOR_2 : XOR_2_Vectors_4_Bits port map(A,B,XORE);
+		NOT_B : NOT_Vector_4_Bits port map(B, NOT_B);
 
 		process(Clk,rst)
 		begin
@@ -219,7 +266,7 @@ architecture Behavioral of maquinaDeEstados is
 														verifica <= 0; -- Default case para prevenir estados indefinidos
 												end if;
 										when "0010" => -- ULA realiza operação de AND dos 2 vetores 
-												if (verifica = 0) then -- Máquina de estados da operação de soma no estado 0
+												if (verifica = 0) then -- Máquina de estados da operação AND no estado 0
 														-- Mostrar código da operação da ULA
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -230,7 +277,7 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 1;
 																Contador <= 0;
 														end if;
-												elsif (verifica = 1) then -- Máquina de estados da operação de soma no estado 1
+												elsif (verifica = 1) then -- Máquina de estados da operação AND no estado 1
 														-- Mostrar input A
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -241,7 +288,7 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 2;
 																Contador <= 0;
 														end if; 
-												elsif (verifica = 2) then -- Máquina de estados da operação de soma no estado 2 
+												elsif (verifica = 2) then -- Máquina de estados da operação AND no estado 2
 														-- Mostrar input B
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -252,7 +299,7 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 3;
 																Contador <= 0;
 														end if;
-												elsif (verifica = 3) then-- Máquina de estados da operação de soma no estado 3
+												elsif (verifica = 3) then -- Máquina de estados da operação AND no estado 3
 														-- Mostrar resultado da operação
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -261,14 +308,14 @@ architecture Behavioral of maquinaDeEstados is
 														else
 																-- Ajustar pra transitar a máquina de estados da ULA
 																verifica <= 0;
-																ULA_Op_Code <= "0000";
+																ULA_Op_Code <= "0011";
 																Contador <= 0;
 														end if; 
 												else
 														verifica <= 0; -- Default case para prevenir estados indefinidos
 												end if;
 										when "0011" => -- ULA realiza operação de OR dos 2 vetores 
-												if (verifica = 0) then -- Máquina de estados da operação de soma no estado 0
+												if (verifica = 0) then -- Máquina de estados da operação OR no estado 0
 														-- Mostrar código da operação da ULA
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -279,7 +326,7 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 1;
 																Contador <= 0;
 														end if;
-												elsif (verifica = 1) then -- Máquina de estados da operação de soma no estado 1
+												elsif (verifica = 1) then -- Máquina de estados da operação OR no estado 1
 														-- Mostrar input A
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -290,7 +337,7 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 2;
 																Contador <= 0;
 														end if; 
-												elsif (verifica = 2) then -- Máquina de estados da operação de soma no estado 2 
+												elsif (verifica = 2) then -- Máquina de estados da operação OR no estado 2
 														-- Mostrar input B
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -301,23 +348,23 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 3;
 																Contador <= 0;
 														end if;
-												elsif (verifica = 3) then-- Máquina de estados da operação de soma no estado 3
+												elsif (verifica = 3) then -- Máquina de estados da operação OR no estado 3
 														-- Mostrar resultado da operação
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
 																OutEsquerda <= "0011";
-																OutDireita <= ANDE;
+																OutDireita <= ORE;
 														else
 																-- Ajustar pra transitar a máquina de estados da ULA
 																verifica <= 0;
-																ULA_Op_Code <= "0000";
+																ULA_Op_Code <= "0100";
 																Contador <= 0;
 														end if; 
 												else
 														verifica <= 0; -- Default case para prevenir estados indefinidos
 												end if;
-										when "0100" => -- ULA realiza operação de NOR dos 2 vetores 
-												if (verifica = 0) then -- Máquina de estados da operação de soma no estado 0
+										when "0100" => -- ULA realiza operação de NOR dos 2 vetores
+												if (verifica = 0) then -- Máquina de estados da operação NOR no estado 0
 														-- Mostrar código da operação da ULA
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -328,7 +375,7 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 1;
 																Contador <= 0;
 														end if;
-												elsif (verifica = 1) then -- Máquina de estados da operação de soma no estado 1
+												elsif (verifica = 1) then -- Máquina de estados da operação NOR no estado 1
 														-- Mostrar input A
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -339,7 +386,7 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 2;
 																Contador <= 0;
 														end if; 
-												elsif (verifica = 2) then -- Máquina de estados da operação de soma no estado 2 
+												elsif (verifica = 2) then -- Máquina de estados da operação NOR no estado 2
 														-- Mostrar input B
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -350,23 +397,23 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 3;
 																Contador <= 0;
 														end if;
-												elsif (verifica = 3) then-- Máquina de estados da operação de soma no estado 3
+												elsif (verifica = 3) then -- Máquina de estados da operação NOR no estado 3
 														-- Mostrar resultado da operação
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
 																OutEsquerda <= "0011";
-																OutDireita <= ANDE;
+																OutDireita <= NORE;
 														else
 																-- Ajustar pra transitar a máquina de estados da ULA
 																verifica <= 0;
-																ULA_Op_Code <= "0000";
+																ULA_Op_Code <= "0101";
 																Contador <= 0;
 														end if; 
 												else
 														verifica <= 0; -- Default case para prevenir estados indefinidos
 												end if;
 										when "0101" => -- ULA realiza operação de NAND dos 2 vetores 
-												if (verifica = 0) then -- Máquina de estados da operação de soma no estado 0
+												if (verifica = 0) then -- Máquina de estados da operação NAND no estado 0
 														-- Mostrar código da operação da ULA
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -377,7 +424,7 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 1;
 																Contador <= 0;
 														end if;
-												elsif (verifica = 1) then -- Máquina de estados da operação de soma no estado 1
+												elsif (verifica = 1) then -- Máquina de estados da operação NAND no estado 1
 														-- Mostrar input A
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -388,7 +435,7 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 2;
 																Contador <= 0;
 														end if; 
-												elsif (verifica = 2) then -- Máquina de estados da operação de soma no estado 2 
+												elsif (verifica = 2) then -- Máquina de estados da operação NAND no estado 2
 														-- Mostrar input B
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -399,23 +446,23 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 3;
 																Contador <= 0;
 														end if;
-												elsif (verifica = 3) then-- Máquina de estados da operação de soma no estado 3
+												elsif (verifica = 3) then -- Máquina de estados da operação NAND no estado 3
 														-- Mostrar resultado da operação
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
 																OutEsquerda <= "0011";
-																OutDireita <= ANDE;
+																OutDireita <= NANDE;
 														else
 																-- Ajustar pra transitar a máquina de estados da ULA
 																verifica <= 0;
-																ULA_Op_Code <= "0000";
+																ULA_Op_Code <= "0110";
 																Contador <= 0;
 														end if; 
 												else
 														verifica <= 0; -- Default case para prevenir estados indefinidos
 												end if;
 										when "0110" => -- ULA realiza operação de XOR dos 2 vetores 
-												if (verifica = 0) then -- Máquina de estados da operação de soma no estado 0
+												if (verifica = 0) then -- Máquina de estados da operação XOR no estado 0
 														-- Mostrar código da operação da ULA
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -426,7 +473,7 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 1;
 																Contador <= 0;
 														end if;
-												elsif (verifica = 1) then -- Máquina de estados da operação de soma no estado 1
+												elsif (verifica = 1) then -- Máquina de estados da operação XOR no estado 1
 														-- Mostrar input A
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -437,7 +484,7 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 2;
 																Contador <= 0;
 														end if; 
-												elsif (verifica = 2) then -- Máquina de estados da operação de soma no estado 2 
+												elsif (verifica = 2) then -- Máquina de estados da operação XOR no estado 2
 														-- Mostrar input B
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -448,23 +495,23 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 3;
 																Contador <= 0;
 														end if;
-												elsif (verifica = 3) then-- Máquina de estados da operação de soma no estado 3
+												elsif (verifica = 3) then -- Máquina de estados da operação XOR no estado 3
 														-- Mostrar resultado da operação
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
 																OutEsquerda <= "0011";
-																OutDireita <= ANDE;
+																OutDireita <= XORE;
 														else
 																-- Ajustar pra transitar a máquina de estados da ULA
 																verifica <= 0;
-																ULA_Op_Code <= "0000";
+																ULA_Op_Code <= "0111";
 																Contador <= 0;
 														end if; 
 												else
 														verifica <= 0; -- Default case para prevenir estados indefinidos
 												end if;
-										when "0111" => -- ULA realiza operação de NOT do segundo vetor
-												if (verifica = 0) then -- Máquina de estados da operação de soma no estado 0
+										when "0111" => -- ULA realiza operação de NOT do segundo vetor 
+												if (verifica = 0) then -- Máquina de estados da operação OR no estado 0
 														-- Mostrar código da operação da ULA
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
@@ -475,34 +522,23 @@ architecture Behavioral of maquinaDeEstados is
 																verifica <= 1;
 																Contador <= 0;
 														end if;
-												elsif (verifica = 1) then -- Máquina de estados da operação de soma no estado 1
-														-- Mostrar input A
+												elsif (verifica = 1) then -- Máquina de estados da operação OR no estado 2
+														-- Mostrar input B
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
 																OutEsquerda <= "0001";
-																OutDireita <= A;
+																OutDireita <= B;
 														else
 																-- Ajustar pra transitar a máquina de estados da operação
 																verifica <= 2;
 																Contador <= 0;
-														end if; 
-												elsif (verifica = 2) then -- Máquina de estados da operação de soma no estado 2 
-														-- Mostrar input B
-														if Contador < 100000000 then
-																Contador <= Contador + 1;
-																OutEsquerda <= "0010";
-																OutDireita <= B;
-														else
-																-- Ajustar pra transitar a máquina de estados da operação
-																verifica <= 3;
-																Contador <= 0;
 														end if;
-												elsif (verifica = 3) then-- Máquina de estados da operação de soma no estado 3
+												elsif (verifica = 2) then -- Máquina de estados da operação OR no estado 3
 														-- Mostrar resultado da operação
 														if Contador < 100000000 then
 																Contador <= Contador + 1;
-																OutEsquerda <= "0011";
-																OutDireita <= ANDE;
+																OutEsquerda <= "0010";
+																OutDireita <= NOT_B;
 														else
 																-- Ajustar pra transitar a máquina de estados da ULA
 																verifica <= 0;
